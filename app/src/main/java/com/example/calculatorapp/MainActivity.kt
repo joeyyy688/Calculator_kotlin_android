@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     fun onOperator(view: View){
         _calculatorInputTextView?.text?.let {
 
-            if (isLastCharacterNumeric && !isOperatorAdded(it.toString()) ){
+            if (isLastCharacterNumeric && !isOperatorAdded(it.toString()) && it.isNotEmpty()){
                 _calculatorInputTextView?.append((view as Button).text)
 
                 isLastCharacterNumeric = false
@@ -77,9 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isOperatorAdded(value: String) : Boolean {
-        return if (value.startsWith("-") ){
-            true
-        }else value.contains("-") || value.contains("+") || value.contains("*") || value.contains("/")
+        return value.contains("-") || value.contains("+") || value.contains("*") || value.contains("/")
     }
 
 
